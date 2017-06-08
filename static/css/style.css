@@ -2,7 +2,13 @@ pre {
   font-size: 90%;
   font-family: "SF Mono","Fira Code",Monaco,Menlo,Consolas,"Courier New",monospace;
   background-color: inherit;
+  color: white;
 }
+
+code {
+  background-color: mintcream;
+}
+
 .blog-title {
   text-transform: lowercase;
 }
