@@ -29,4 +29,4 @@ jobs:
       - deploy:
           name: Upload to GCS
           command: |
-            gsutil rsync -r /0xcc.io/public gs://0xcc.io
+            gsutil rsync -r /0xcc.io/public gs://blog.0xcc.io
