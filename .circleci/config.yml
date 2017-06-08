@@ -11,7 +11,6 @@ jobs:
 
     steps:
       - checkout
-      - run: git submodule update --init
       - run:
           name: Decode Google Cloud Credentials
           command: echo ${GOOGLE_AUTH} | base64 -i --decode > ${HOME}/gcp-key.json
