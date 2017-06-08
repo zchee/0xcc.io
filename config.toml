@@ -1,0 +1,11 @@
+baseURL = "http://0xcc.io/"
+languageCode = "ja-JP"
+title = "0xcc"
+theme = "Detox"
+PygmentsCodeFences = true
+pygmentsstyle = "monokai"
+[params]
+author = "zchee ( Koichi Shiraishi )"
+github = "zchee"
+twitter_name = "_zchee_"
+useExcerpt = false
