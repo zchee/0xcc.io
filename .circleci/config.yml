@@ -21,6 +21,11 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run:
+          name: Install pip and Pygments
+          command: |
+            wget -q -O - https://bootstrap.pypa.io/get-pip.py | python
+            pip install Pygments
+      - run:
           name: Install hugo and generate public source
           command: |
             wget -q https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb
@@ -29,4 +34,4 @@ jobs:
       - deploy:
           name: Upload to GCS
           command: |
-            gsutil rsync -r /0xcc.io/public gs://blog.0xcc.io
+            gsutil -q rsync -r /0xcc.io/public gs://blog.0xcc.io
