@@ -20,16 +20,20 @@ Goのfuncの上に//exportを記述することによって，上部記述した
 ### Mapping the C namespace to Go
 Everything declared in the C code is available in the C pseudo-package
 Fundamental C data types have their counterpart,
-```
+
+```go
 int → C.int
 unsigned short → C.ushort
 ```
+
 The Go equivalent to `void * is unsafe.Pointer`
 typedefs are available under their own name
 structs are available with a struct_ prefix, 
-```
+
+```go
 struct foo → C.struct_foo
 ```
+
 same goes for unions and enums
 
 だそう．

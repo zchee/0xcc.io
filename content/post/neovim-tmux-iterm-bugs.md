@@ -37,19 +37,19 @@ neovimのlibtermkey、tmuxのterminal-overridesなど、iTermの実装、Karabin
 - Keyboard: Kinesis Advantage
   - MacBook Proのベンダーキーボードでも確認
 
-```vim
+```text
 nvimrc
 ```
 
-```conf
+```text
 tmux.conf
 ```
 
-```plist
+```text
 com.googlecode.iterm2.plist
 ```
 
-```plist
+```text
 Karabiner settings
 ```
 
