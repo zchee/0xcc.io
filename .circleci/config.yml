@@ -1,0 +1,31 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: google/cloud-sdk:latest  # Use latest stable version
+        environment:
+          GOOGLE_PROJECT_ID: zeroxccio
+          GOOGLE_COMPUTE_ZONE: asia-east-1
+    working_directory: /0xcc.io
+
+    steps:
+      - checkout
+      - run:
+          name: Decode Google Cloud Credentials
+          command: echo ${GOOGLE_AUTH} | base64 -i --decode > ${HOME}/gcp-key.json
+      - run:
+          name: Setup gcloud config
+          command: |
+            gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+      - run:
+          name: Install hugo and generate public source
+          command: |
+            wget -q -O - https://github.com/spf13/hugo/releases/download/v0.21/hugo_0.21_Linux-64bit.deb | dpkg -i -
+            hugo
+      - deploy:
+          name: Upload to GCS
+          command: |
+            gsutil rsync -r /0xcc.io/public gs://0xcc.io
