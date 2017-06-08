@@ -1,7 +1,7 @@
 baseURL = "http://0xcc.io/"
 languageCode = "ja-JP"
 title = "0xcc"
-theme = "Detox"
+theme = "detox"
 PygmentsCodeFences = true
 pygmentsstyle = "monokai"
 [params]
