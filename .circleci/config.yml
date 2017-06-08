@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install pip and Pygments
+          name: Install pip, Pygments and awscli
           command: |
             wget -q -O - https://bootstrap.pypa.io/get-pip.py | python
             pip install Pygments awscli
@@ -20,6 +20,6 @@ jobs:
             dpkg -i hugo_0.21_Linux-64bit.deb
             hugo
       - deploy:
-          name: Upload to GCS
+          name: Upload to AWS S3
           command: |
             aws s3 sync /0xcc.io/public s3://0xcc.io
