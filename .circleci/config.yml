@@ -3,28 +3,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: google/cloud-sdk:latest  # Use latest stable version
-        environment:
-          GOOGLE_PROJECT_ID: zeroxccio
-          GOOGLE_COMPUTE_ZONE: asia-east-1
+      - image: python:latest  # Use latest stable version
     working_directory: /0xcc.io
 
     steps:
       - checkout
       - run:
-          name: Decode Google Cloud Credentials
-          command: echo ${GOOGLE_AUTH} | base64 -i --decode > ${HOME}/gcp-key.json
-      - run:
-          name: Setup gcloud config
-          command: |
-            gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
-            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-      - run:
           name: Install pip and Pygments
           command: |
             wget -q -O - https://bootstrap.pypa.io/get-pip.py | python
-            pip install Pygments
+            pip install Pygments awscli
       - run:
           name: Install hugo and generate public source
           command: |
@@ -34,4 +22,4 @@ jobs:
       - deploy:
           name: Upload to GCS
           command: |
-            gsutil -q rsync -r /0xcc.io/public gs://blog.0xcc.io
+            aws s3 sync /0xcc.io/public s3://0xcc.io
