@@ -1,4 +1,4 @@
-baseURL = "http://0xcc.io/"
+baseURL = "http://blog.0xcc.io/"
 languageCode = "ja-JP"
 title = "0xcc"
 theme = "detox"
