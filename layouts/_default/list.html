@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{{ partial "head.html" . }}
+<body>
+
+  <header id="site-header">
+    {{ partial "header.html" . }}
+  </header>
+<main class="content" role="main">
+<div class="container">
+  {{ range .Paginator.Pages }}
+  {{ .Render "li" }}
+  {{ end }}
+  {{ partial "pagination.html" . }}
+</div>
+</main>
+{{ partial "footer.html" . }}
+{{ partial "google_analytics.html" . }}
+</body>
+</html>

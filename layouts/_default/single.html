@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{{ partial "head.html" . }}
+<body>
+
+  <header id="site-header" class="minimum">
+    {{ partial "header.html" . }}
+  </header>
+<main class="content" role="main">
+<div class="container">
+  {{ .Render "post" }}
+</div>
+</main>
+{{ partial "footer.html" . }}
+{{ partial "google_analytics.html" . }}
+
+</body>
+</html>
